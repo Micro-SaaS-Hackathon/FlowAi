@@ -23,7 +23,7 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/signin")
-    public ResponseEntity<?> signIn(HttpServletRequest request) {
+    public ResponseEntity<?> signIn( HttpServletRequest request) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (auth != null && auth.isAuthenticated() && !auth.getName().equals("anonymousUser")) {
@@ -48,6 +48,12 @@ public class AuthController {
                 response.put("username", user.getUsername());
                 response.put("email", user.getEmail());
                 response.put("role", user.getRole());
+
+                // Premium məlumatları əlavə et
+                response.put("accountType", user.getAccountType());
+                response.put("isPremium", user.isPremium());
+
+
                 return ResponseEntity.ok(response);
             } catch (RuntimeException e) {
                 Map<String, String> error = new HashMap<>();

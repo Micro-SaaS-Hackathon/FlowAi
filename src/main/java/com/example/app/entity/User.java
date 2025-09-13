@@ -45,6 +45,14 @@ public class User {
     @Column(nullable = false)
     private Boolean active = true;
 
+    @Column(name = "account_type")
+    private String accountType = "FREE";
+
+    public boolean isPremium() {
+        return "PREMIUM".equals(accountType);
+    }
+
+
     // Constructors
     public User() {}
 
