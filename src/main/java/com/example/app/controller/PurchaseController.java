@@ -82,6 +82,7 @@ public class PurchaseController {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             User user = userService.findByUsername(auth.getName());
 
+
             List<Order> orders = orderService.getUserOrders(user);
 
             List<OrderDTO> orderDTOs = orders.stream()
