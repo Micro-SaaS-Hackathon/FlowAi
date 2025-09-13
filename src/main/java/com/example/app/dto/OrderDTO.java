@@ -2,16 +2,21 @@ package com.example.app.dto;
 
 import com.example.app.entity.Order;
 import com.example.app.enums.OrderStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Data
 public class OrderDTO {
 
     private Long orderId;
     private Long userId;
+    private String email;
     private String username;
     private BigDecimal totalAmount;
     private OrderStatus status;

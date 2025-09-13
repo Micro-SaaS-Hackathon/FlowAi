@@ -30,7 +30,7 @@ public class PurchaseController {
     public ResponseEntity<?> createOrder(@RequestBody Map<String, Object> request) {
         try {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            User user = userService.findByUsername(auth.getName());
+            User user = userService.findByEmail(auth.getName());
 
             @SuppressWarnings("unchecked")
             List<Map<String, Object>> items = (List<Map<String, Object>>) request.get("items");
@@ -80,7 +80,7 @@ public class PurchaseController {
     public ResponseEntity<?> getUserOrders() {
         try {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            User user = userService.findByUsername(auth.getName());
+            User user = userService.findByEmail(auth.getName());
 
 
             List<Order> orders = orderService.getUserOrders(user);
